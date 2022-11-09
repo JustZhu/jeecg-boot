@@ -149,7 +149,7 @@ spring:
     password: 1qazXSW@@
 #mybatis plus 设置
 mybatis-plus:
-  mapper-locations: classpath*:org/jeecg/modules/**/xml/*Mapper.xml
+  mapper-locations: classpath*:org/jeecg/modules/**/xml/*Mapper.xml,classpath*:com/labor/**/xml/*Mapper.xml
   global-config:
     # 关闭MP3.0自带的banner
     banner: false

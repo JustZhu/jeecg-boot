@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.labor.mapper.LaborCompJnMapper">
+
+
+    <select id="queryGhListByGhbm" parameterType="String" resultType="com.labor.entity.LaborCompJn">
+
+        select p.organ_id,
+               p.organ_code,
+               p.organ_name,
+               p.parent_id,
+               p.ctime,
+               p.organ_type,
+               p.is_leaf,
+               p.in_use,
+               j.labor_name,
+               j.labor_code,
+               j.labor_type,
+               j.ucode,
+               j.leader,
+               j.aphone,
+               j.flabor_name,
+               j.labor_id,
+               j.zzlx,
+               j.zzjglx,
+               j.qxid,
+               j.qxname,
+               j.qxcode,
+               j.jdid,
+               j.jdname,
+               j.jdcode,
+               j.company_name,
+               j.company_credit_code,
+               j.labor_type,
+               j.ucode,
+               j.leader,
+               j.aphone,
+               j.flabor_name,
+               j.labor_id,
+               j.zzlx,
+               j.zzjglx,
+               j.qxid,
+               j.qxname,
+               j.qxcode,
+               j.jdid,
+               j.jdname,
+               j.jdcode
+        from pub_organ p
+                 left join labor_comp_jn j on p.organ_code = j.labor_code
+        where p.parent_id = #{parentId}
+        order by stru_order asc
+    </select>
+
+    <select id="hasChild" parameterType="String" resultType="int">
+        select count(1)
+        from pub_organ p
+        where p.parent_id = #{parentId}
+    </select>
+</mapper>
